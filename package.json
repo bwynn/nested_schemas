@@ -1,0 +1,9 @@
+{
+  "name": "nested-schemas",
+  "main": "app.js",
+  "dependencies": {
+    "express": "latest",
+    "mongoose": "latest",
+    "body-parser": "latest"
+  }
+}
