@@ -3,7 +3,7 @@ var Schema = mongoose.Schema;
 var User = require('./user');
 
 var GroupSchema = new Schema({
-  users: [{ type: mongoose.Schema.ObjectId, ref: 'User'}]
+  users: [User.schema]
 });
 
 module.exports = mongoose.model('Group', GroupSchema);

@@ -19,7 +19,7 @@ module.exports = function(app) {
     user.username = req.body.username;
     // if the imgUrl property has been filled out
     if (req.body.imgUrl) {
-      user.image.push(img); // add the image to the user's image array 
+      user.image.push(img); // add the image to the user's image array
     }
 
     user.save(function(err, user) {
@@ -32,7 +32,7 @@ module.exports = function(app) {
   });
 
   // update images based on user id
-  app.put('/populate', function(req, res) {
+  app.put('/populate/addImg', function(req, res) {
     User.findOne({_id: req.body.id}, function(err, user) {
       // instantiate new image
       var img = new Image();
@@ -46,6 +46,21 @@ module.exports = function(app) {
       }, function(err, user) {
         if (err) {
           res.send(err)
+        }
+
+        res.json(user);
+      });
+    });
+  });
+
+  // remove item from user image array using image id 
+  app.put('/populate/removeImg', function(req, res) {
+    User.findOne({_id: req.body.id}, function(err, user) {
+      User.update({username: req.body.username}, {
+        $pull: { image: {_id: req.body.img_id} }
+      }, function(err, user) {
+        if (err) {
+          res.send(err);
         }
 
         res.json(user);
