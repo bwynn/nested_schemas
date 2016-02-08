@@ -53,7 +53,7 @@ module.exports = function(app) {
     });
   });
 
-  // remove item from user image array using image id 
+  // remove item from user image array using image id
   app.put('/populate/removeImg', function(req, res) {
     User.findOne({_id: req.body.id}, function(err, user) {
       User.update({username: req.body.username}, {
@@ -77,5 +77,10 @@ module.exports = function(app) {
       res.json(users);
     });
   });
+
+  // front end routes
+  app.get("*", function(req, res, next) {
+    res.sendFile(path.join(__dirname, './public/views/index.html'));
+  })
 
 };

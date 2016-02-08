@@ -5,5 +5,9 @@
     "express": "latest",
     "mongoose": "latest",
     "body-parser": "latest"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-sass": "^2.2.0"
   }
 }
